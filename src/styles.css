@@ -1,0 +1,109 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --font-serif: "Cormorant Garamond", ui-serif, Georgia, serif;
+  --font-sans: "Karla", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.5rem;
+  /* Warm Sand palette */
+  --background: oklch(0.985 0.005 80);          /* #faf8f5 */
+  --foreground: oklch(0.32 0.025 60);           /* deep ink */
+  --card: oklch(0.965 0.012 80);                /* #f0ebe3 surface */
+  --card-foreground: oklch(0.32 0.025 60);
+  --popover: oklch(0.985 0.005 80);
+  --popover-foreground: oklch(0.32 0.025 60);
+  --primary: oklch(0.48 0.04 60);               /* #8b7355 ink */
+  --primary-foreground: oklch(0.985 0.005 80);
+  --secondary: oklch(0.965 0.012 80);
+  --secondary-foreground: oklch(0.48 0.04 60);
+  --muted: oklch(0.95 0.012 80);
+  --muted-foreground: oklch(0.55 0.03 65);
+  --accent: oklch(0.78 0.045 75);               /* #c9b99a */
+  --accent-foreground: oklch(0.32 0.025 60);
+  --destructive: oklch(0.55 0.18 25);
+  --destructive-foreground: oklch(0.985 0.005 80);
+  --border: oklch(0.9 0.015 75);
+  --input: oklch(0.92 0.012 78);
+  --ring: oklch(0.78 0.045 75);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html, body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "ss02";
+  }
+  h1, h2, h3, h4, .font-serif {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .grain::before {
+    content: "";
+    position: fixed; inset: 0; pointer-events: none; z-index: 50;
+    background-image: radial-gradient(circle at 1px 1px, rgba(139,115,85,0.06) 1px, transparent 0);
+    background-size: 3px 3px;
+    mix-blend-mode: multiply;
+  }
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
+    overflow-x: hidden;
+    touch-action: manipulation;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  button,
+  a {
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 640px) {
+  .grain::before {
+    opacity: 0.5;
+  }
+}
